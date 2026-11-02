@@ -24,12 +24,13 @@
 <tr><th>Service and scope</th><th>What AgenticLab can do</th><th>What it cannot do</th></tr>
 <tr><td>Gmail<br><code>https://www.googleapis.com/auth/gmail.readonly</code></td><td>Search messages; read headers, text and attachments</td><td>Send, delete, label or modify messages</td></tr>
 <tr><td>Google Calendar<br><code>https://www.googleapis.com/auth/calendar.readonly</code></td><td>List the owner's calendars; read their events (title, time, place, attendees count, status), including the Birthdays calendar</td><td>Create, change, delete or answer events</td></tr>
-<tr><td>Google Tasks<br><code>https://www.googleapis.com/auth/tasks</code></td><td>Read task lists and tasks; create, complete, postpone and edit tasks at the owner's request</td><td>Delete a task without the owner's explicit approval of that exact deletion</td></tr>
+<tr><td>Google Tasks<br><code>https://www.googleapis.com/auth/tasks</code></td><td>Read task lists and tasks; create and complete tasks at the owner's request; create a shopping list</td><td>Delete a task, except one it added itself when the owner asks to undo that addition</td></tr>
+<tr><td>Google Sheets<br><code>https://www.googleapis.com/auth/spreadsheets</code></td><td>Create one workbook in the owner's Drive ("AgenticLab — Reference") and read and update it; read the tabs the owner selects in the sheets the owner registers by link</td><td>Browse or list the owner's Drive; open a sheet the owner has not registered; write to a registered sheet; delete a row or a file</td></tr>
 </table>
 <p>No other Google account and no other Google service is accessed.</p>
 
 <h2>How the data is used</h2>
-<p>Email, calendar and task data are used only to carry out the owner's own requests and routines: summaries, answers to questions about the owner's mail, agenda and tasks, a weekly planning view, reminders of birthdays and events the owner cares about, digests on a schedule the owner sets, and watchers on senders the owner chooses. Google user data is:</p>
+<p>Email, calendar, task and spreadsheet data are used only to carry out the owner's own requests and routines: summaries, answers to questions about the owner's mail, agenda and tasks, a weekly planning view, meal planning from the owner's recipe list, follow-up of the owner's open requests, reminders of birthdays and events the owner cares about, digests on a schedule the owner sets, and watchers on senders the owner chooses. Google user data is:</p>
 <ul>
 <li>not sold;</li>
 <li>not used for advertising;</li>
@@ -42,7 +43,7 @@
 <table>
 <tr><th>Processor</th><th>Role</th><th>Google user data involved</th></tr>
 <tr><td>Scaleway (France, EU)</td><td>Hosts the owner's server, database and encrypted backups; sends report emails to the owner</td><td>Messages read for a request, calendar events of the next weeks, tasks, and results, stored on the owner's server</td></tr>
-<tr><td>OpenAI</td><td>Language model that reads the text needed for a request and writes the answer</td><td>Excerpts of the messages, events or tasks needed for that request, sent via the API with storage disabled</td></tr>
+<tr><td>OpenAI</td><td>Language model that reads the text needed for a request and writes the answer; web search for public information when the owner asks (gift ideas, opening hours…)</td><td>Excerpts of the messages, events, tasks or sheet rows needed for that request, sent via the API with storage disabled. Web-search questions are written without names or personal details.</td></tr>
 <tr><td>Telegram</td><td>Messaging channel through which the owner receives results</td><td>Results written for the owner (summaries, answers)</td></tr>
 <tr><td>Cloudflare</td><td>Identity gate and encrypted tunnel in front of the owner's private web interface (only the owner's account is let through)</td><td>Pages the owner opens in that interface pass through it encrypted in transit; nothing is stored there</td></tr>
 <tr><td>Langfuse (EU region)</td><td>Technical monitoring: timings, costs, error codes</td><td>None. Email, calendar and task content, subjects and addresses are not sent.</td></tr>
@@ -54,7 +55,7 @@
 <p>Access can be revoked at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. AgenticLab then stops accessing the revoked service immediately.</p>
 
 <h2>Security</h2>
-<p>The server accepts no inbound connection except administration over SSH; the owner's web interface is reached only through an outbound tunnel, behind an identity check and a passkey. Each component holds only the credentials it needs. Every change made in Google Tasks and every action of the web interface is recorded in an audit log that the components cannot rewrite.</p>
+<p>The server accepts no inbound connection except administration over SSH; the owner's web interface is reached only through an outbound tunnel, behind an identity check and a passkey. Each component holds only the credentials it needs. Every change made in Google Tasks or Google Sheets and every action of the web interface is recorded in an audit log that the components cannot rewrite.</p>
 
 <h2>Contact</h2>
 <p><a href="mailto:floinard_agenticlab@gmail.com">floinard_agenticlab@gmail.com</a></p>
