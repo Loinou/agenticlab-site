@@ -12,7 +12,7 @@
 <main>
 <header>
 <h1>Privacy policy</h1>
-<p class="lead">AgenticLab · last updated 2026-11-02</p>
+<p class="lead">AgenticLab · last updated 2026-11-05</p>
 </header>
 
 <h2>Who uses AgenticLab</h2>
@@ -44,6 +44,8 @@
 <tr><th>Processor</th><th>Role</th><th>Google user data involved</th></tr>
 <tr><td>Scaleway (France, EU)</td><td>Hosts the owner's server, database and encrypted backups; sends report emails to the owner</td><td>Messages read for a request, calendar events of the next weeks, tasks, and results, stored on the owner's server</td></tr>
 <tr><td>OpenAI</td><td>Language model that reads the text needed for a request and writes the answer; web search for public information when the owner asks (gift ideas, opening hours…)</td><td>Excerpts of the messages, events, tasks or sheet rows needed for that request, sent via the API with storage disabled. Web-search questions are written without names or personal details.</td></tr>
+<tr><td>Anthropic (United States)</td><td>Alternative language model, used only when the owner selects it for a role or a mission; also web search when selected</td><td>Excerpts of the messages, events, tasks or sheet rows needed for that request, sent via the API; Anthropic does not train on API data by default</td></tr>
+<tr><td>Mistral AI (France, EU)</td><td>Alternative language model, transcription, document text extraction and image generation, used only when the owner selects it for a role or a mission; also web search when selected</td><td>Excerpts of the messages, events, tasks or sheet rows needed for that request, sent via the API; image prompts</td></tr>
 <tr><td>Telegram</td><td>Messaging channel through which the owner receives results</td><td>Results written for the owner (summaries, answers)</td></tr>
 <tr><td>Cloudflare</td><td>Identity gate and encrypted tunnel in front of the owner's private web interface (only the owner's account is let through)</td><td>Pages the owner opens in that interface pass through it encrypted in transit; nothing is stored there</td></tr>
 <tr><td>Langfuse (EU region)</td><td>Technical monitoring: timings, costs, error codes</td><td>None. Email, calendar and task content, subjects and addresses are not sent.</td></tr>
